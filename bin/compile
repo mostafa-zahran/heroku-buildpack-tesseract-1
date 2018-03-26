@@ -35,7 +35,7 @@ for i in "${!array_ara[@]}"
    do
      lang="${array_ara[i]}"
      echo $lang 'training data'
-     curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/$TESSERACT_OCR_DATA_VERSION${array_ara[i]}> $INSTALL_DIR_TRAINING_DATA/${array_ara[i]}
+     curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/$TESSERACT_OCR_DATA_VERSION/${array_ara[i]}> $INSTALL_DIR_TRAINING_DATA/${array_ara[i]}
 done
 
 echo "Building runtime environment for Tesseract-OCR"
