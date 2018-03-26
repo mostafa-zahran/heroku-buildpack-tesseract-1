@@ -11,7 +11,7 @@ TRAINING_DATA_DIR=${HOME}/vendor
 TESSERACT_OCR_DIR=${HOME}/vendor/tesseract-ocr
 ENVSCRIPT=$BUILD_DIR/.profile.d/tesseract-ocr.sh
 
-TESSERACT_OCR_LANGUAGES=eng,ara
+TESSERACT_OCR_LANGUAGES=eng
 
 echo "Unpacking Tesseract-OCR binaries"
 mkdir -p $INSTALL_DIR
@@ -29,6 +29,14 @@ then
      curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/$TESSERACT_OCR_DATA_VERSION/$lang.traineddata > $INSTALL_DIR_TRAINING_DATA/$lang.traineddata
    done
 fi
+ARR_FILES=ara.cube.bigrams,ara.cube.fold,ara.cube.lm,ara.cube.nn,ara.cube.params,ara.cube.size,ara.cube.word-freq,ara.traineddata
+array_ara=(${ARR_FILES//,/ })
+for i in "${!array_ara[@]}"
+   do
+     lang="${array_ara[i]}"
+     echo $lang 'training data'
+     curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/$TESSERACT_OCR_DATA_VERSION${array_ara[i]}> $INSTALL_DIR_TRAINING_DATA${array_ara[i]}
+done
 
 echo "Building runtime environment for Tesseract-OCR"
 mkdir -p $BUILD_DIR/.profile.d
