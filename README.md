@@ -1,15 +1,13 @@
 # Heroku Buildpack Tesseract
 
-This package provide a custom Heroku buildpack providing the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) binary and all the required libraries to Heroku apps. Training data for English language is provided. 
+This package provide a custom Heroku buildpack providing the [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) binary and all the required libraries to Heroku apps. Training data for English And Arabic languages is provided. 
 
 ## Configuration
-
-The first step consists in allowing your Heroku app to use multiple buildpacks. Heroku natively supports [multiple buildpacks per app](https://devcenter.heroku.com/articles/using-multiple-buildpacks-for-an-app).
 
 1. setup your app as  
     ```
     heroku buildpacks:set heroku/LANG
-    heroku buildpacks:add https://github.com/oswellchan/heroku-buildpack-tesseract
+    heroku buildpacks:add https://github.com/mostafa-zahran/heroku-buildpack-tesseract-1
     ```
 	
     where `LANG` is the language used by your app (e.g., `ruby`, `python`, or `nodejs`). A complete list of Heroku buildpacks can be found [here](https://devcenter.heroku.com/articles/buildpacks).
@@ -17,6 +15,7 @@ The first step consists in allowing your Heroku app to use multiple buildpacks. 
 3. deploy :)
 
 ## Note
+This is a modified fork from https://github.com/oswellchan/heroku-buildpack-tesseract
 This fork upgrades Tesseract binary version from 3.03 to 3.04.01
 
 ## License
